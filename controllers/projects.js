@@ -15,7 +15,7 @@ exports.getProjects = asyncHandler(async (req, res, next) => {
 exports.getProject = asyncHandler(async (req, res, next) => {
 	// Select these fields only
 	const fields =
-		"modalImage category description organizationImage tools links";
+		"modalImage category descriptionDetail organizationImage tools links";
 
 	// Find Project
 	let project = await Project.findOne({ _id: req.params.id })
