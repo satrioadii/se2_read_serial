@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const ProjectSchema = new mongoose.Schema({
-	name: {
+	title: {
 		type: String,
-		required: [true, "Please add a name"],
+		required: [true, "Please add a title"],
 		trim: true,
 	},
 	description: {

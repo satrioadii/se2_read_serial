@@ -11,7 +11,7 @@ const advancedResults = require("../middleware/advancedResults");
 router
 	.route("/")
 	.get(
-		advancedResults(Project, null, { select: "name description image" }),
+		advancedResults(Project, null, { select: "title description image" }),
 		getProjects
 	);
 
