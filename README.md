@@ -1,7 +1,7 @@
-# API for satrioadi.com
+# API for To Do Serial Communication using Serialport.io
 
-Backend service for public in order to retrieve the data on my personal website
-(satrioadi.com).
+This project will help you to do serial communication with embedded systems such as
+Raspberry PI, Arduino, or STM32. Follow instruction below to try this on your own.
 
 ## Getting Started
 
@@ -14,7 +14,7 @@ project on a live system.
 If you interested to clone this project, you may use this command.
 
 ```
-git clone https://github.com/satrioadii/public-api-satrioadi.com.git
+git clone https://github.com/satrioadii/se2_read_serial.git
 ```
 
 ### Installing
@@ -42,8 +42,6 @@ This is the example.
 ```
 NODE_ENV=development
 PORT=7001
-
-MONGO_URI=YOUR_MONGO_URI
 ```
 
 Then run the server with this command
@@ -55,29 +53,14 @@ npm run dev
 The development server is started on port 7001. If the PORT variable is not
 exist, the port 5000 will be selected by default.
 
-## Deployment
-
-In order to start this project in a production server, run this code.
-
-```
-npm run start
-```
-
-You may use one of this reference as the development process in your server.
-
-- [Setup Node JS App for Production](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04) -
-  Deployment using Nginx on Ubuntu
-
-Or search for your preferred options.
-
 ## Built With
 
 - [Express JS](https://expressjs.com/) - The web framework used
-- [Mongoose](https://mongoosejs.com/) - MongoDB Object Modelling
+- [SerialPort](https://serialport.io/) - Serial Communication Package
 
 ## Authors
 
-- **Satrio Adi** - _Initial work_ - [satrioadii](https://github.com/satrioadii)
+- **Satrio Adi** - [satrioadii](https://github.com/satrioadii)
 
 ## License
 
