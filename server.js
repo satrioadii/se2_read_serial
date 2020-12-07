@@ -9,7 +9,7 @@ const cors = require("cors");
 
 // Serial Port
 const SerialPort = require('serialport');
-const sPort = new SerialPort('/dev/tty-usbserial1', { autoOpen: true });
+const sPort = new SerialPort('/dev/tty-usbserial1', { autoOpen: true, baudRate: 9600 });
 
 const errorHandler = require("./middleware/error");
 
@@ -50,8 +50,9 @@ app.use(cors());
 
 
 //Serial Port "flowing mode"
-sPort.on('data', function (data) {
-	console.log('Data:', data);
+const parser = sPort.pipe(new Readline({ delimiter: '\r\n' }))
+parser.on('data', function (data) {
+	console.log('Retrieved Data:', data);
 });
 
 
