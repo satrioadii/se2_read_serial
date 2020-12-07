@@ -1,7 +1,7 @@
 const express = require("express");
-const { getProjects, getProject } = require("../controllers/projects");
+const { getProjects, getProject } = require("../controllers/update");
 
-const Project = require("../models/Project");
+const Project = require("../models/Update");
 
 const router = express.Router();
 

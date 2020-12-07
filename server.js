@@ -1,30 +1,16 @@
 const dotnev = require("dotenv");
 
-const path = require("path");
-
 const express = require("express");
 const morgan = require("morgan");
 
 // SECURITY
-// NO-SQL INJECTION PREVENT
-const mongoSanitize = require("express-mongo-sanitize");
-
-// SECURITY HEADERS
-const helmet = require("helmet");
-
-// XSS-PROTECTION
-const xss = require("xss-clean");
-
-// RATE-LIMIT
-const rateLimit = require("express-rate-limit");
-
-// HPP
-const hpp = require("hpp");
-
 // CORS
 const cors = require("cors");
 
-const connectDB = require("./config/db");
+// Serial Port
+const SerialPort = require('serialport');
+const port = new SerialPort('/dev/tty-usbserial1', { autoOpen: true });
+
 const errorHandler = require("./middleware/error");
 
 const colors = require("colors");
@@ -34,14 +20,10 @@ const fileUpload = require("express-fileupload");
 const cookieParser = require("cookie-parser");
 
 // ROUTE FILE
-const projects = require("./routes/projects");
-const tools = require("./routes/tools");
+// const updates = require("./routes/update");
 
 // LOAD ENV
 dotnev.config({ path: "./config/config.env" });
-
-// CONNECT DB
-connectDB();
 
 // Use basic routing middleware
 // Express
@@ -55,32 +37,23 @@ app.use(cookieParser());
 // Log Middleware in Dev
 if (process.env.NODE_ENV === "development") {
 	app.use(morgan("dev"));
-}
+};
+
 // File upload
 app.use(fileUpload());
 
-// Use security middleware
-// Sanitiza data
-app.use(mongoSanitize());
-// Set security headers
-app.use(helmet());
-// Prevent XSS attacks
-app.use(xss());
-// Prevent https param pollution
-app.use(hpp());
 // Enable cors
 app.use(cors());
 
-// RATE LIMIT SET
-const ViewsRateLimit = rateLimit({
-	windowMs: 1 * 10 * 1000, //10 detik
-	max: 100,
-	message: { success: "false", message: "To many request" },
+// Mount routers
+// app.use("/api/v1/update", projects);
+
+
+//Serial Port "flowing mode"
+port.on('data', function (data) {
+	console.log('Data:', data);
 });
 
-// Mount routers
-app.use("/api/v1/project", ViewsRateLimit, projects);
-app.use("/api/v1/tool", ViewsRateLimit, tools);
 
 // Error Handler Middleware
 app.use(errorHandler);
