@@ -9,7 +9,7 @@ const cors = require("cors");
 
 // Serial Port
 const SerialPort = require('serialport');
-const port = new SerialPort('/dev/tty-usbserial1', { autoOpen: true });
+const sPort = new SerialPort('/dev/tty-usbserial1', { autoOpen: true });
 
 const errorHandler = require("./middleware/error");
 
@@ -50,7 +50,7 @@ app.use(cors());
 
 
 //Serial Port "flowing mode"
-port.on('data', function (data) {
+sPort.on('data', function (data) {
 	console.log('Data:', data);
 });
 
