@@ -16,6 +16,7 @@
 	"author": "satrioadi",
 	"license": "MIT",
 	"dependencies": {
+		"axios": "^0.21.0",
 		"bcryptjs": "^2.4.3",
 		"colors": "^1.4.0",
 		"cookie-parser": "^1.4.5",
@@ -34,6 +35,7 @@
 		"nodemon": "^2.0.4",
 		"serialport": "^9.0.3",
 		"slugify": "^1.4.5",
+		"socket.io-client": "^3.0.4",
 		"xss-clean": "^0.1.1"
 	}
 }
